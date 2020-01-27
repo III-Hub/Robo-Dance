@@ -1,0 +1,36 @@
+version: '2'
+
+services:
+  mdb:
+    image: 'bitnami/mariadb:10.1'
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - MARIADB_USER=dbuser
+      - MARIADB_DATABASE=db
+      - MARIADB_PASSWORD=dbpass
+
+  robots: 
+    tty: true
+    image: bitnami/laravel:5-debian-9
+    environment:
+      - DB_HOST=mdb
+      - DB_USERNAME=dbuser
+      - DB_DATABASE=db
+      - DB_PASSWORD=dbpass
+    depends_on:
+      - mdb
+    ports:
+      - 3000:3000
+    volumes:
+      - ./:/app
+
+  phpmyadmin:
+    image: bitnami/phpmyadmin:latest
+    depends_on:
+      - mdb
+    ports:
+      - '80:80'
+      - '443:443'
+    environment:
+      - PHPMYADMIN_ALLOW_NO_PASSWORD=true
+      - PHPMYADMIN_ALLOW_ARBITRARY_SERVER=true
