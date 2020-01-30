@@ -27,7 +27,12 @@ class RobotsController extends Controller
             $team->save();
         }
 
-        $robot = Robot::create($this->validateData());
+        try {
+            $robot = Robot::create($this->validateData());
+        } catch (\Exception $e) {
+            return response(['Error' => 'There was a problem with information provided'], Response::HTTP_BAD_REQUEST);
+        }
+
         $team->members()->create([
             'robot_id' => $robot->id
         ]);
