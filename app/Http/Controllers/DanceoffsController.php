@@ -98,7 +98,7 @@ class DanceoffsController extends Controller
                                   ['lost', $robot1_id],
                                   ['season_id', $this->active_season_id],
                                  ])->first(); 
-    }
+    } 
 
     private function checkTeamPlayed($robot1_id, $robot2_id)
     {

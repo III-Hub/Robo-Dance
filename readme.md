@@ -1,26 +1,26 @@
 # Robo-Dance
 
-This is a solution to the parkside challenge Robo-Dance compatition.
+The Robo-Dance challenge solution.
 
 ## Set up
 
 The Laravel framework was used. 
 
 ### Data
-The the file db.sql contains the database dump that can be imported. 
-This database already has 2 teams with 5 members each, and 5 danceoffs between a pair of robots from opposing team. 
+The db.sql file contains the database dump that can be imported. 
+This database already has 2 teams with 5 members each, and 5 danceoffs between pairs of robots from opposing team. 
 
 ### A typical Laravel environment will work
 
 ### Using Docker
-If using docker, the included docker-compose.yml file will pull and set up a LAMP development environment. The app is served at localhost:3000 and PhpMyadmin at locahost. 
+If using docker, the included docker-compose.yml file will pull and set up a LAMP development environment. The app is served at localhost:5000 and PhpMyadmin at locahost. 
 
 ## Execution
 The app uses the following endpoints with respective http methods in brackets. 
 
 ### Robots
 * /api/robots   (GET) List of robots
-* /api/robots/id   (GET)  A robot whose id is provided
+* /api/robots/:id   (GET)  A robot whose id is provided
 * /api/robots   (POST) Add new robot. The format is shown below and all values are required
 ```
 {
